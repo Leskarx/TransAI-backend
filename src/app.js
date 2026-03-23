@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import translateController from "./controllers/translate.Controller.js"
-import e from "cors"
+import aimodeController from "./controllers/aimode.controller.js"
 
 
 const app=express()
@@ -18,6 +18,8 @@ app.get("/health",(req,res)=>{
 })
 
 app.post("/translate",translateController)
+app.post("/aimode",aimodeController)
+
 
 export default app
 
