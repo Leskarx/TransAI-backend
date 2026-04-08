@@ -16,6 +16,10 @@ app.get("/health",(req,res)=>{
     })
 
 })
+app.get("/ip", async (req, res) => {
+    const r = await fetch("https://ipapi.co/json/");
+    res.json(await r.json());
+  });
 
 app.post("/translate",translateController)
 app.post("/aimode",aimodeController)
