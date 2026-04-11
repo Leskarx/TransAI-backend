@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import translateController from "./controllers/translate.Controller.js"
 import aimodeController from "./controllers/aimode.controller.js"
+import { handleUpload } from "./controllers/upload.controller.js";
+import upload from "./config/multer.js";
 
 
 const app=express()
@@ -23,7 +25,7 @@ app.get("/ip", async (req, res) => {
 
 app.post("/translate",translateController)
 app.post("/aimode",aimodeController)
-
+app.post("/upload", upload.single("pdf"), handleUpload);
 
 export default app
 
