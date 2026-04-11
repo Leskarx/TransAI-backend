@@ -5,6 +5,8 @@ import { pdfToPng } from "pdf-to-png-converter";
 import { translateBatch } from "./translate.service.js";
 import sizeOf from "image-size";
 
+
+
 function getImageSize(buffer) {
   const dimensions = sizeOf(buffer);
   return {
@@ -14,7 +16,9 @@ function getImageSize(buffer) {
 }
 
 export async function processPDF(buffer) {
-  let browser = null;
+  console.log(await puppeteer.executablePath());
+
+  let browser;
 
   try {
     console.log("📄 Extracting text...");
