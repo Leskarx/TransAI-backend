@@ -18,7 +18,7 @@ function getImageSize(buffer) {
 export async function processPDF(buffer) {
   console.log(await puppeteer.executablePath());
 
-  let browser;
+  // let browser;
 
   try {
     console.log("📄 Extracting text...");
@@ -45,9 +45,9 @@ export async function processPDF(buffer) {
     const html = buildHtml(pageImages, textBlocks);
 
     // 🔹 Puppeteer
-    browser = await puppeteer.launch({
-      headless: "new",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    const browser = await puppeteer.launch({
+      executablePath: "/opt/render/.cache/puppeteer/chrome/linux-146.0.7680.153/chrome-linux64/chrome",
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
     const page = await browser.newPage();
